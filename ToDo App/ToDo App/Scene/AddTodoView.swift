@@ -37,6 +37,7 @@ struct AddTodoView: View {
                     Button(action: {
                         if self.name != "" {
                             let newToDo = ToDo(context: viewContext)
+                            //newToDo.id = UUID()
                             newToDo.name = self.name
                             newToDo.priority = self.priority
                             
