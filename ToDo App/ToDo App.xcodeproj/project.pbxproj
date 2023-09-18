@@ -16,6 +16,7 @@
 		C81F00862AB843E10032F371 /* AddTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F00852AB843E10032F371 /* AddTodoView.swift */; };
 		C81F00882AB846FF0032F371 /* ToDoListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F00872AB846FF0032F371 /* ToDoListScene.swift */; };
 		C81F008B2AB8635E0032F371 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F008A2AB8635E0032F371 /* LaunchScreen.swift */; };
+		C81F008E2AB8661B0032F371 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F008D2AB8661B0032F371 /* EmptyListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C81F00872AB846FF0032F371 /* ToDoListScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListScene.swift; sourceTree = "<group>"; };
 		C81F008A2AB8635E0032F371 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		C81F008C2AB864280032F371 /* ToDo-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ToDo-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C81F008D2AB8661B0032F371 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				C81F00852AB843E10032F371 /* AddTodoView.swift */,
 				C81F00872AB846FF0032F371 /* ToDoListScene.swift */,
 				C81F008A2AB8635E0032F371 /* LaunchScreen.swift */,
+				C81F008D2AB8661B0032F371 /* EmptyListView.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				C81F00882AB846FF0032F371 /* ToDoListScene.swift in Sources */,
 				C81F007B2AB843940032F371 /* Persistence.swift in Sources */,
 				C81F00742AB843930032F371 /* ContentView.swift in Sources */,
+				C81F008E2AB8661B0032F371 /* EmptyListView.swift in Sources */,
 				C81F00722AB843930032F371 /* ToDo_AppApp.swift in Sources */,
 				C81F007E2AB843940032F371 /* ToDo_App.xcdatamodeld in Sources */,
 				C81F00862AB843E10032F371 /* AddTodoView.swift in Sources */,

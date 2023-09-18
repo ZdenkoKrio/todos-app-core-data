@@ -20,34 +20,40 @@ struct ToDoListScene: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(self.todos, id: \.self) { todo in
-                    HStack {
-                        Text(todo.name ?? "Unknown")
-                        Spacer()
-                        Text(todo.priority ?? "Unknown")
-                    } // HSTACK
-                } // EACH
-                .onDelete(perform: deleteTodo)
-            } // LIST
-            .navigationTitle("Todo")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                } // TOOLBAR ITEM
+            ZStack {
+                List {
+                    ForEach(self.todos, id: \.self) { todo in
+                        HStack {
+                            Text(todo.name ?? "Unknown")
+                            Spacer()
+                            Text(todo.priority ?? "Unknown")
+                        } // HSTACK
+                    } // EACH
+                    .onDelete(perform: deleteTodo)
+                } // LIST
+                .navigationTitle("Todo")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        EditButton()
+                    } // TOOLBAR ITEM
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            self.showingAddTodoView.toggle()
+                        }) {
+                            Image(systemName: "plus")
+                        } // BUTTON
+                        .sheet(isPresented: $showingAddTodoView) {
+                            AddTodoView()
+                        }// SHEET
+                    } // TOOLBAR ITEM
+                } // TOOLBAR
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        self.showingAddTodoView.toggle()
-                    }) {
-                        Image(systemName: "plus")
-                    } // BUTTON
-                    .sheet(isPresented: $showingAddTodoView) {
-                        AddTodoView()
-                    }// SHEET
-                } // TOOLBAR ITEM
-            } // TOOLBAR
+                if todos.count == 0 {
+                    EmptyListView()
+                }
+            } // ZSTACK
         } // NAVIGATION
     }
     
