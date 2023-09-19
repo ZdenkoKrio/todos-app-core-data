@@ -20,6 +20,9 @@ struct ToDoListScene: View {
     @State private var showingAddTodoView: Bool = false
     @State private var animatingButton: Bool = false
     
+    @ObservedObject var theme = ThemeSettings.shared
+    var themes: [Theme] = themeData
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -38,6 +41,7 @@ struct ToDoListScene: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         EditButton()
+                            .accentColor(themes[self.theme.themeSettings].themeColor)
                     } // TOOLBAR ITEM
                     
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -47,6 +51,7 @@ struct ToDoListScene: View {
                             Image(systemName: "paintbrush")
                                 .imageScale(.large)
                         } // BUTTON
+                        .accentColor(themes[self.theme.themeSettings].themeColor)
                         .sheet(isPresented: $showingSettingsView) {
                             SettingsScene()
                         } // SHEET
@@ -64,12 +69,12 @@ struct ToDoListScene: View {
                 ZStack {
                     Group {
                         Circle()
-                            .fill(.blue)
+                            .fill(themes[self.theme.themeSettings].themeColor)
                             .opacity(self.animatingButton ? 0.2 : 0)
                             .scaleEffect(self.animatingButton ? 1 : 0)
                             .frame(width: 68, height: 68, alignment: .center)
                         Circle()
-                            .fill(.blue)
+                            .fill(themes[self.theme.themeSettings].themeColor)
                             .opacity(self.animatingButton ? 0.15 : 0)
                             .scaleEffect(self.animatingButton ? 1 : 0)
                             .frame(width: 88, height: 88, alignment: .center)
@@ -90,7 +95,7 @@ struct ToDoListScene: View {
                             .background(Circle().fill(Color("ColorBase")))
                             .frame(width: 48, height: 48, alignment: .center)
                     } //BUTTON
-                    
+                    .accentColor(themes[self.theme.themeSettings].themeColor)
                 } // ZSTACK
                     .padding(.bottom, 15)
                     .padding(.trailing, 15)

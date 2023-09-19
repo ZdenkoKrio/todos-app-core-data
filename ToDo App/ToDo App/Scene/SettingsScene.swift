@@ -10,10 +10,50 @@ import SwiftUI
 struct SettingsScene: View {
     @Environment(\.presentationMode) var presentationMode
     
+    let themes: [Theme] = themeData
+    @ObservedObject var theme = ThemeSettings.shared
+    @State private var isThemeChanged: Bool = false
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .center, spacing: 0) {
                 Form {
+                    Section(header:
+                      HStack {
+                        Text("Choose the app theme")
+                        Image(systemName: "circle.fill")
+                          .resizable()
+                          .frame(width: 10, height: 10)
+                          .foregroundColor(themes[self.theme.themeSettings].themeColor)
+                      }
+                    ) {
+                      List {
+                        ForEach(themes, id: \.id) { item in
+                          Button(action: {
+                            self.theme.themeSettings = item.id
+                            UserDefaults.standard.set(self.theme.themeSettings, forKey: "Theme")
+                            self.isThemeChanged.toggle()
+                          }) {
+                            HStack {
+                              Image(systemName: "circle.fill")
+                                .foregroundColor(item.themeColor)
+                              
+                              Text(item.themeName)
+                            }
+                          } //: BUTTON
+                            .accentColor(Color.primary)
+                        }
+                      }
+                    } //: SECTION 2
+                      .padding(.vertical, 3)
+                      .alert(isPresented: $isThemeChanged) {
+                        Alert(
+                          title: Text("SUCCESS!"),
+                          message: Text("App has been changed to the \(themes[self.theme.themeSettings].themeName)!"),
+                          dismissButton: .default(Text("OK"))
+                        )
+                    }
+                    
                     Section(header: Text("Follow us on social media")) {
                       FormRowLinkView(icon: "globe", color: Color.pink, text: "Website", link: "https://swiftuimasterclass.com")
                       FormRowLinkView(icon: "link", color: Color.blue, text: "Twitter", link: "https://twitter.com")
@@ -52,6 +92,7 @@ struct SettingsScene: View {
                     }) {
                         Image(systemName: "xmark")
                     }
+                    .accentColor(themes[self.theme.themeSettings].themeColor)
                 } // TOOLBAR ITEM
             } // TOOLBAR
         } // NAVIGATION
