@@ -64,7 +64,7 @@ struct SettingsScene: View {
                     Section(header: Text("About the aplication")) {
                         Section(header: Text("About the application")) {
                           FormRowStaticView(icon: "gear", firstText: "Application", secondText: "Todo")
-                          FormRowStaticView(icon: "checkmark.seal", firstText: "Compatibility", secondText: "iPhone, iPad")
+                          FormRowStaticView(icon: "checkmark.seal", firstText: "Compatibility", secondText: "iPhone")
                           FormRowStaticView(icon: "keyboard", firstText: "Developer", secondText: "Zdenko")
                           FormRowStaticView(icon: "paintbrush", firstText: "Designer", secondText: "Robert Petras")
                           FormRowStaticView(icon: "flag", firstText: "Version", secondText: "1.0.0")
@@ -96,6 +96,7 @@ struct SettingsScene: View {
                 } // TOOLBAR ITEM
             } // TOOLBAR
         } // NAVIGATION
+        .accentColor(themes[self.theme.themeSettings].themeColor)
     }
 }
 
