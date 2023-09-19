@@ -16,6 +16,7 @@ struct ToDoListScene: View {
         animation: .default)
     private var todos: FetchedResults<ToDo>
     
+    @State private var showingSettingsView: Bool = false
     @State private var showingAddTodoView: Bool = false
     @State private var animatingButton: Bool = false
     
@@ -41,10 +42,14 @@ struct ToDoListScene: View {
                     
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
-                            self.showingAddTodoView.toggle()
+                            self.showingSettingsView.toggle()
                         }) {
-                            Image(systemName: "plus")
+                            Image(systemName: "paintbrush")
+                                .imageScale(.large)
                         } // BUTTON
+                        .sheet(isPresented: $showingSettingsView) {
+                            SettingsScene()
+                        } // SHEET
                     } // TOOLBAR ITEM
                 } // TOOLBAR
                 
